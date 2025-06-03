@@ -30,7 +30,7 @@
         "spotify_user": "str?",
         "spotify_password": "str?",
         "speaker": "str?",
-        "bitrate": "int(96,320)?",
+        "bitrate": "match(96|160|320)?",
         "allow_guests": "bool?",
         "initial_volume": "int(0,100)?",
         "device_type": "match(computer|tablet|smartphone|speaker|tv|avr|stb|audiodongle)?"
