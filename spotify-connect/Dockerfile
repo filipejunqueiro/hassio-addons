@@ -1,18 +1,14 @@
 ARG BUILD_FROM
-#FROM $BUILD_FROM
-FROM resin/rpi-raspbian:stretch
+FROM $BUILD_FROM
 
-# Add env
 ENV LANG C.UTF-8
 
-# Setup base
-RUN apt-get update
-RUN apt-get install -y jq sox
-RUN apt-get install -y alsa-utils
+RUN apt-get update && \
+    apt-get install -y jq sox alsa-utils curl && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install raspotify (librespot wrapper)
+# Install Raspotify (librespot wrapper)
 RUN curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
-
 
 COPY run.sh /
 RUN chmod a+x /run.sh
