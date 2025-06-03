@@ -1,20 +1,25 @@
 {
-  "name": "Spotify connect",
-  "version": "0.5.1",
+  "name": "Spotify Connect",
+  "version": "0.6.0",
   "slug": "spotify_connect",
   "description": "Allow device to be discovered by Spotify and play music via Spotify Connect",
-  "arch":["armhf"],
+  "arch": ["armv7", "armhf", "aarch64"],
   "startup": "application",
   "boot": "auto",
   "audio": true,
-  "hassio_api": true,
-  "hassio_role": "default",
+  "homeassistant_api": true,
+  "homeassistant_api_role": "default",
   "options": {
     "instances": [
       {
-        "device_name": "Home assistant",
-        "spotify_user": "username_or_email",
-        "spotify_password": "password"
+        "device_name": "Home Assistant",
+        "spotify_user": "",
+        "spotify_password": "",
+        "speaker": "hw:0,1",
+        "bitrate": 160,
+        "allow_guests": true,
+        "initial_volume": 80,
+        "device_type": "speaker"
       }
     ]
   },
@@ -25,7 +30,7 @@
         "spotify_user": "str?",
         "spotify_password": "str?",
         "speaker": "str?",
-        "bitrate": "match(96|160|320)?",
+        "bitrate": "int(96,320)?",
         "allow_guests": "bool?",
         "initial_volume": "int(0,100)?",
         "device_type": "match(computer|tablet|smartphone|speaker|tv|avr|stb|audiodongle)?"
